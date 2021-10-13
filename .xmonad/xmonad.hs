@@ -4,7 +4,6 @@ import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import qualified XMonad.StackSet as W
 
-    -- Actions
 import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.CycleWS (Direction1D(..), moveTo, shiftTo, WSType(..), nextScreen, prevScreen, nextWS, prevWS, shiftToPrev, shiftToNext)
 import XMonad.Actions.GridSelect
@@ -17,7 +16,6 @@ import qualified XMonad.Actions.Search as S
 import qualified XMonad.Actions.ConstrainedResize as Sqr
 import XMonad.Actions.FloatSnap
 
-    -- Data
 import Data.Char (isSpace, toUpper)
 import Data.Maybe (fromJust)
 import Data.Monoid
@@ -25,16 +23,15 @@ import Data.Maybe (isJust)
 import Data.Tree
 import qualified Data.Map as M
 
-    -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
-import XMonad.Hooks.ManageHelpers (isInProperty, isFullscreen, doFullFloat, doCenterFloat)
+import XMonad.Hooks.ManageHelpers (isInProperty, isDialog, isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
+import XMonad.Hooks.Place
 
-    -- Layouts
 import XMonad.Layout.Accordion
 import XMonad.Layout.GridVariants (Grid(Grid))
 import XMonad.Layout.SimplestFloat
@@ -43,7 +40,6 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 
-    -- Layouts modifiers
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.Magnifier
@@ -60,7 +56,6 @@ import XMonad.Layout.WindowNavigation
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
-   -- Utilities
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
@@ -155,13 +150,16 @@ myLayoutHook = showWName' myShowWNameTheme
 			||| floats
 			||| wideAccordion
 
+myPlaceHook :: Placement
+myPlaceHook = inBounds (underMouse (0.5, 0.5))
+
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
-myManageHook = composeAll [
-    isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG" --> doCenterFloat
-    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_SPLASH" --> doCenterFloat
+myManageHook = placeHook myPlaceHook <+> composeAll [
+    isDialog --> doFloat
+    , isFullscreen --> doFullFloat
     , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU" --> doFloat
+    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_SPLASH" --> doFloat
     , isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doFloat
-    , isFullscreen -->  doFullFloat
     ] <+> manageDocks
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X())

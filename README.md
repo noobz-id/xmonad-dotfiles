@@ -66,6 +66,12 @@ super = Super key (windows key)
 32. brightness_down           -> decrease brightness display
 33. prt_scr (print_screen)    -> take screenshot
 
+Mouse Bindings:
+super = Super Key (Windows Key)
+1. super + left click               -> move window
+2. super + right click              -> Resize window Left,Right,Up,Down
+3. super + shift + right click      -> Resize window Right,Down
+
 NOTE:
 1. Xmonad Config and stuff in: ~/.xmonad, Xmobar config: ~/.xmonad/xmobar/xmobar.hs
 2. This config set Menu key as Super_R key, because in my keyboard layout only have Left Super key (Super_L). i don't need the Menu key, so i remap this key. See xmonad.hs at line #93: spawnOnce "xmodmap -e \"keysym Menu = Super_R\"" , you can delete this line if you not used my key map.
