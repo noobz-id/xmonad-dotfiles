@@ -29,7 +29,7 @@ Attributes (used for this config):
 11. Ubuntu font, Awesome font, Mononoki font, google-font(optional) -> font collection
 12. rofi -> replacement for dmenu. what ?, this is app launcher menu.
 13. scrot -> screenshot program
-14. lxsession -> for serve pollkit (gvfs) support file manager like thunar to manage usb drive, android-mtp, etc.
+14. lxsession -> i have benefit features from this program like: polkit (gvfs: android-mtp, apple-mobile-device, volume mounter and more), auto start support xdg desktop files (/etc/xdg/autostart and ~/.config/autostart) many application use this like virtualbox daemon, etc. i customize the auto start program like nitrogen,trayer and udiskie to ~/.config/autostart. so you no need to edit and recompile again the xmonad.hs. you can add more autostart (.desktop) program to this folder if you needed and enable/disable in Desktop Session Settings
 
 Key Bindings:
 super = Super key (windows key)

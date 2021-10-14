@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Name=Nitrogen
+Exec=nitrogen --restore
+StartupNotify=true
+Type=Application
