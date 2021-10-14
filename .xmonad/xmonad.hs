@@ -86,12 +86,12 @@ myStartupHook = do
     setWMName "LG3D"
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "xmodmap -e \"keysym Menu = Super_R\""
+    spawnOnce "killall lxsession; lxsession"
     spawnOnce "killall nitrogen; nitrogen --restore"
     spawnOnce "killall pulseaudio; pulseaudio"
     spawnOnce "killall nm-applet; nm-applet"
     spawnOnce "killall blueman-applet; blueman-applet"
     spawnOnce "killall udiskie; udiskie -t"
-    spawnOnce "killall pasystray; pasystray"
     spawnOnce "killall trayer; trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x282c34 --height 22"
 
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..]
