@@ -29,6 +29,7 @@ Attributes (used for this config):
 11. Ubuntu font, Awesome font, Mononoki font, google-font(optional) -> font collection
 12. rofi -> replacement for dmenu. what ?, this is app launcher menu.
 13. scrot -> screenshot program
+14. lxsession -> for serve pollkit (gvfs) support file manager like thunar to manage usb drive, android-mtp, etc.
 
 Key Bindings:
 super = Super key (windows key)
