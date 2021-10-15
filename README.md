@@ -4,6 +4,7 @@ Just my ugly (but efficient) xmonad setup for daily driver
 ![Screenshot 1](screenshots/2021-10-10-10:53:39-screenshot.png)
 ![Screenshot 2](screenshots/2021-10-10-10:53:51-screenshot.png)
 ![Screenshot 3](screenshots/2021-10-10-16:27:16-screenshot.png)
+![Screenshot 4](screenshots/2021-10-15-15:05:47-screenshot.png)
 
 In case: I use Arch BTW 🤭
 and also work for all linux distro with xmonad installed.
