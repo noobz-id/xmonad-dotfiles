@@ -1,48 +1,32 @@
 import XMonad
-import System.Directory
 import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import qualified XMonad.StackSet as W
 
 import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.CycleWS (Direction1D(..), moveTo, shiftTo, WSType(..), nextScreen, prevScreen, nextWS, prevWS, shiftToPrev, shiftToNext)
-import XMonad.Actions.GridSelect
 import XMonad.Actions.MouseResize
-import XMonad.Actions.Promote
-import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
-import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
-import qualified XMonad.Actions.Search as S
-import qualified XMonad.Actions.ConstrainedResize as Sqr
 import XMonad.Actions.FloatSnap
+import qualified XMonad.Actions.ConstrainedResize as Sqr
 
-import Data.Char (isSpace, toUpper)
 import Data.Maybe (fromJust)
 import Data.Monoid
 import Data.Maybe (isJust)
-import Data.Tree
 import qualified Data.Map as M
 
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isInProperty, isDialog, isFullscreen, doFullFloat, doCenterFloat)
-import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
-import XMonad.Hooks.WorkspaceHistory
 import XMonad.Hooks.Place
 
 import XMonad.Layout.Accordion
-import XMonad.Layout.GridVariants (Grid(Grid))
 import XMonad.Layout.SimplestFloat
-import XMonad.Layout.Spiral
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.Tabbed
-import XMonad.Layout.ThreeColumns
-
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
-import XMonad.Layout.Magnifier
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
 import XMonad.Layout.NoBorders
@@ -52,12 +36,10 @@ import XMonad.Layout.Simplest
 import XMonad.Layout.Spacing
 import XMonad.Layout.SubLayouts
 import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
-import XMonad.Layout.WindowNavigation
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
 import Graphics.X11.ExtraTypes.XF86
-import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
@@ -115,9 +97,10 @@ tall = renamed [Replace "tall"]
 floats = renamed [Replace "floats"]
     $ withBorder myBorderWidth
     $ smartBorders
-	$ limitWindows 20 simplestFloat
+	$ limitWindows 20 
+    $ simplestFloat
 
-wideAccordion = renamed [Replace "wideAccordion"]
+wide = renamed [Replace "wide"]
     $ withBorder myBorderWidth
     $ smartBorders
     $ subLayout [] (smartBorders Simplest)
@@ -130,9 +113,9 @@ myLayoutHook = showWName' myShowWNameTheme
 	$ mouseResize 
 	$ windowArrange
 	$ T.toggleLayouts floats 
-	$ T.toggleLayouts wideAccordion
+	$ T.toggleLayouts wide
 	$ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
-    $ tall ||| floats ||| wideAccordion
+    $ tall ||| floats ||| wide
 
 myPlaceHook :: Placement
 myPlaceHook = inBounds (underMouse (0.5, 0.5))
@@ -155,7 +138,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
 	, ((modm .|. shiftMask, xK_c), kill1)
 	, ((modm .|. shiftMask, xK_a), killAll)
 	, ((modm, xK_f), sendMessage (T.Toggle "floats"))
-	, ((modm, xK_w), sendMessage (T.Toggle "wideAccordion"))
+	, ((modm, xK_w), sendMessage (T.Toggle "wide"))
 	, ((modm, xK_m), windows W.focusMaster)
 	, ((modm, xK_j), windows W.focusDown)
 	, ((modm, xK_k), windows W.focusUp)
@@ -182,29 +165,24 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
         | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $ [
     ((modm, button1) ,(\w -> focus w
 		>> mouseMoveWindow w
 		>> ifClick (snapMagicMove (Just 50) (Just 50) w)
 		>> windows W.shiftMaster))
-
 	, ((modm .|. shiftMask, button1), (\w -> focus w
 		>> mouseMoveWindow w
 		>> ifClick (snapMagicResize [L,R,U,D] (Just 50) (Just 50) w)
 		>> windows W.shiftMaster))
-
 	, ((modm, button3), (\w -> focus w
 		>> mouseResizeWindow w
 		>> ifClick (snapMagicResize [R,D] (Just 50) (Just 50) w)
 		>> windows W.shiftMaster))
-
 	, ((modm .|. shiftMask, button3), (\w -> focus w
 		>> Sqr.mouseResizeWindow w True
 		>> ifClick (snapMagicResize [R,D] (Just 50) (Just 50) w)
 		>> windows W.shiftMaster ))
 	]
-
 
 main :: IO()
 main = do
@@ -228,10 +206,10 @@ main = do
 			, ppVisible = xmobarColor "#c792ea" "" . clickable
 			, ppHidden = xmobarColor "#ecbe7b" "" . clickable
 			, ppHiddenNoWindows = xmobarColor "#82AAFF" "" . clickable
-			, ppTitle = xmobarColor "#d0d0d0" "" . shorten 60
+			, ppTitle = xmobarColor "#d0d0d0" "" . shorten 65
 			, ppSep =  "<fc=#666666> <fn=1>|</fn> </fc>"
 			, ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"
 			, ppExtras  = [windowCount]
-			, ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+			, ppOrder  = \(w:l:t:e) -> [w,concat([l, ": "]++e),t]
 		}
 	}

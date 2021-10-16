@@ -76,7 +76,7 @@ super = Super Key (Windows Key)
 
 NOTE:
 1. Xmonad Config and stuff in: ~/.xmonad, Xmobar config: ~/.xmonad/xmobar/xmobar.hs
-2. This config set Menu key as Super_R key, because in my keyboard layout only have Left Super key (Super_L). i don't need the Menu key, so i remap this key. See xmonad.hs at line #84: spawnOnce "xmodmap -e \"keysym Menu = Super_R\"" , you can delete this line if you not used my key map.
+2. This config set Menu key as Super_R key, because in my keyboard layout only have Left Super key (Super_L). i don't need the Menu key, so i remap this key. See xmonad.hs at line #67: spawnOnce "xmodmap -e \"keysym Menu = Super_R\"" , you can delete this line if you not used my key map.
 3. Please change /home/zuliz to /home/your_user directory in xmobar.hs at lines #18 & #21, or xmobar will broken.
 4. if you just follow my config please install required Attributes software above.
 5. all changed in xmonad.hs mustbe recompiled, use cmd: xmonad --recompile. then restart your xmonad or re-login.
