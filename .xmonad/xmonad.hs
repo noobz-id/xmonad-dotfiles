@@ -61,9 +61,6 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
-myFont :: String
-myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
-
 myModMask :: KeyMask
 myModMask = mod4Mask
 
@@ -104,23 +101,12 @@ myShowWNameTheme = def
 	, swn_color	= "#ffffff"
 	}
 
-myTabTheme = def {
-	fontName		= myFont
-	, activeColor		= "#46d9ff"
-	, inactiveColor		= "#313846"
-	, activeBorderColor	= "#46d9ff"
-	, inactiveBorderColor	= "#282c34"
-	, activeTextColor	= "#282c34"
-	, inactiveTextColor	= "#d0d0d0"
-}
-
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
 tall = renamed [Replace "tall"]
+    $ withBorder myBorderWidth
 	$ smartBorders
-	$ windowNavigation
-	$ addTabs shrinkText myTabTheme
 	$ subLayout [] (smartBorders Simplest)
 	$ limitWindows 12
 	$ mySpacing 2
@@ -131,6 +117,9 @@ floats = renamed [Replace "floats"]
 	$ limitWindows 20 simplestFloat
 
 wideAccordion = renamed [Replace "wideAccordion"]
+    $ withBorder myBorderWidth
+    $ smartBorders
+    $ subLayout [] (smartBorders Simplest)
     $ limitWindows 12
     $ mySpacing 1
 	$ Mirror Accordion
@@ -138,13 +127,11 @@ wideAccordion = renamed [Replace "wideAccordion"]
 myLayoutHook = showWName' myShowWNameTheme 
 	$ avoidStruts
 	$ mouseResize 
-	$ windowArrange 
+	$ windowArrange
 	$ T.toggleLayouts floats 
 	$ T.toggleLayouts wideAccordion
 	$ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
-		where myDefaultLayout = withBorder myBorderWidth tall
-			||| floats
-			||| wideAccordion
+		where myDefaultLayout = tall ||| floats ||| wideAccordion
 
 myPlaceHook :: Placement
 myPlaceHook = inBounds (underMouse (0.5, 0.5))
