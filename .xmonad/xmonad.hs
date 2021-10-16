@@ -131,6 +131,8 @@ floats = renamed [Replace "floats"]
 	$ limitWindows 20 simplestFloat
 
 wideAccordion = renamed [Replace "wideAccordion"]
+    $ limitWindows 12
+    $ mySpacing 1
 	$ Mirror Accordion
 
 myLayoutHook = showWName' myShowWNameTheme 
