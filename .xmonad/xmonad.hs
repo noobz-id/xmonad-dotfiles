@@ -113,6 +113,7 @@ tall = renamed [Replace "tall"]
 	$ ResizableTall 1 (3/100) (1/2) []
 
 floats = renamed [Replace "floats"]
+    $ withBorder myBorderWidth
     $ smartBorders
 	$ limitWindows 20 simplestFloat
 
@@ -130,8 +131,8 @@ myLayoutHook = showWName' myShowWNameTheme
 	$ windowArrange
 	$ T.toggleLayouts floats 
 	$ T.toggleLayouts wideAccordion
-	$ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
-		where myDefaultLayout = tall ||| floats ||| wideAccordion
+	$ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
+    $ tall ||| floats ||| wideAccordion
 
 myPlaceHook :: Placement
 myPlaceHook = inBounds (underMouse (0.5, 0.5))
@@ -139,7 +140,7 @@ myPlaceHook = inBounds (underMouse (0.5, 0.5))
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = placeHook myPlaceHook <+> composeAll [
     isDialog --> doFloat
-    , isFullscreen --> doFullFloat
+    , isFullscreen --> (doF W.focusDown <+> doFullFloat)
     , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU" --> doFloat
     , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_SPLASH" --> doFloat
     , isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doFloat
