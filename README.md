@@ -28,7 +28,7 @@ Attributes (used for this config):
 9.  udiskie -> usb auto mounter with system tray support
 10. alacritty -> my favorite terminal
 11. Ubuntu font, Awesome font, Mononoki font, google-font(optional) -> font collection
-12. rofi -> replacement for dmenu. what ?, this is app launcher menu.
+12. rofi -> replacement for dmenu. what ?, this is app launcher menu. to change theme, execute command: "rofi-theme-selector" > enter selected theme (preview) > "Alt + a" to apply or "Esc" to cancel.
 13. scrot -> screenshot program
 14. lxsession -> i have benefit features from this program like: polkit (gvfs: android-mtp, apple-mobile-device, volume mounter and more), auto start support xdg desktop files (/etc/xdg/autostart and ~/.config/autostart) many application use this like virtualbox daemon, etc. i customize the auto start program like nitrogen,trayer and udiskie to ~/.config/autostart. so you no need to edit and recompile again the xmonad.hs. you can add more autostart (.desktop) program to this folder if you needed and enable/disable in Desktop Session Settings
 

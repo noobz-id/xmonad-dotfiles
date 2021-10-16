@@ -151,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
     ((modm, xK_Return), spawn $ XMonad.terminal conf)
 	, ((modm .|. shiftMask, xK_r), spawn "xmonad --restart")
 	, ((modm .|. shiftMask, xK_q), io exitSuccess)
-	, ((modm, xK_p), spawn "rofi -show drun -show-icons -theme dt-dmenu")
+	, ((modm, xK_p), spawn "rofi -show drun -show-icons")
 	, ((modm .|. shiftMask, xK_c), kill1)
 	, ((modm .|. shiftMask, xK_a), killAll)
 	, ((modm, xK_f), sendMessage (T.Toggle "floats"))
