@@ -39,9 +39,9 @@ import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
-import Graphics.X11.ExtraTypes.XF86
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
+import Graphics.X11.ExtraTypes.XF86
 
 myModMask :: KeyMask
 myModMask = mod4Mask
