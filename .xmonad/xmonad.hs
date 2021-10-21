@@ -53,7 +53,7 @@ myBorderWidth :: Dimension
 myBorderWidth = 2
 
 myNormColor :: String
-myNormColor   = "#282c34"
+myNormColor   = "#00787a"
 
 myFocusColor :: String
 myFocusColor  = "#46d9ff"
@@ -77,10 +77,10 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
-	{ swn_font	= "xft:Ubuntu:bold:size=60"
-	, swn_fade	= 1.0
+	{ swn_font      = "xft:Ubuntu:bold:size=60"
+	, swn_fade	    = 1.0
 	, swn_bgcolor	= "#1c1f24"
-	, swn_color	= "#ffffff"
+	, swn_color	    = "#ffffff"
 	}
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -139,6 +139,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
 	, ((modm .|. shiftMask, xK_a), killAll)
 	, ((modm, xK_f), sendMessage (T.Toggle "floats"))
 	, ((modm, xK_w), sendMessage (T.Toggle "wide"))
+    , ((modm, xK_t), withFocused $ windows . W.sink)
+    , ((modm .|. shiftMask, xK_t), sinkAll)
 	, ((modm, xK_m), windows W.focusMaster)
 	, ((modm, xK_j), windows W.focusDown)
 	, ((modm, xK_k), windows W.focusUp)
