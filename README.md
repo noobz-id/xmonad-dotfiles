@@ -54,7 +54,7 @@ super = Super key (windows key)
 18. super + shift + q         -> close xmonad (if use Display Manager this action for logout)
 19. super + shift + r         -> restart xmonad on the fly
 20. super + shift + space     -> reset layout mode
-21. super + shift + t         -> revert back floating (mouse drag/resize) windows to tile (tall)
+21. super + shift + t         -> revert back all floating (mouse drag/resize) windows to tile (tall)
 22. super + shift + j         -> swapping down focused window (move down)
 23. super + shift + k         -> swapping up focused window (move up)
 24. super + shift + -         -> move focused window to prev workspace
