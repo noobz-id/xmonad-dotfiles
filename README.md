@@ -48,25 +48,27 @@ super = Super key (windows key)
 12. super + 1-9               -> switch to another workspace
 13. super + f1-f3             -> switch screen workspace for multi monitor
 14. super + space             -> full screen for focused window, use this for watch movie
-15. super + shift + a         -> close all window in current workspace
-16. super + shift + c         -> close focused window
-17. super + shift + q         -> close xmonad (if use Display Manager this action for logout)
-18. super + shift + r         -> restart xmonad on the fly
-19. super + shift + space     -> reset layout mode
-20. super + shift + j         -> swapping down focused window (move down)
-21. super + shift + k         -> swapping up focused window (move up)
-22. super + shift + -         -> move focused window to prev workspace
-23. super + shift + =         -> move focused window to next workspace
-24. super + shift + 1-9       -> move focused window to another workspace
-25. super + shift + f1-f3     -> move focused window to another screen workspace (for multi monitor)
-26. esc                       -> cancel action
-27. enter                     -> select action
-28. audio_mute                -> mute audio
-29. audio_raise               -> increase audio volume
-30. audio_lower               -> decrease audio volume
-31. brightness_up             -> increase brightness display
-32. brightness_down           -> decrease brightness display
-33. prt_scr (print_screen)    -> take screenshot
+15. super + t                 -> revert back focused floating (mouse drag/resize) window to tile (tall)
+16. super + shift + a         -> close all window in current workspace
+17. super + shift + c         -> close focused window
+18. super + shift + q         -> close xmonad (if use Display Manager this action for logout)
+19. super + shift + r         -> restart xmonad on the fly
+20. super + shift + space     -> reset layout mode
+21. super + shift + t         -> revert back floating (mouse drag/resize) windows to tile (tall)
+22. super + shift + j         -> swapping down focused window (move down)
+23. super + shift + k         -> swapping up focused window (move up)
+24. super + shift + -         -> move focused window to prev workspace
+25. super + shift + =         -> move focused window to next workspace
+26. super + shift + 1-9       -> move focused window to another workspace
+27. super + shift + f1-f3     -> move focused window to another screen workspace (for multi monitor)
+28. esc                       -> cancel action
+29. enter                     -> select action
+30. audio_mute                -> mute audio
+31. audio_raise               -> increase audio volume
+32. audio_lower               -> decrease audio volume
+33. brightness_up             -> increase brightness display
+34. brightness_down           -> decrease brightness display
+35. prt_scr (print_screen)    -> take screenshot
 
 Mouse Bindings:
 super = Super Key (Windows Key)
