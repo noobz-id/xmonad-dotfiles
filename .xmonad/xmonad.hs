@@ -41,6 +41,7 @@ import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
+
 import Graphics.X11.ExtraTypes.XF86
 
 myModMask :: KeyMask
@@ -78,7 +79,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
 	{ swn_font      = "xft:Ubuntu:bold:size=60"
-	, swn_fade	    = 1.0
+	, swn_fade	    = 0.5
 	, swn_bgcolor	= "#1c1f24"
 	, swn_color	    = "#ffffff"
 	}
@@ -105,7 +106,7 @@ wide = renamed [Replace "wide"]
     $ smartBorders
     $ subLayout [] (smartBorders Simplest)
     $ limitWindows 12
-    $ mySpacing 1
+    $ mySpacing 2
 	$ Mirror Accordion
 
 myLayoutHook = showWName' myShowWNameTheme 
@@ -152,6 +153,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
 	, ((modm, xK_equal), nextWS)
 	, ((modm .|. shiftMask, xK_minus), shiftToPrev)
 	, ((modm .|. shiftMask, xK_equal), shiftToNext)
+    , ((modm, xK_bracketleft), decWindowSpacing 2)
+    , ((modm, xK_bracketright), incWindowSpacing 2)
 	, ((modm, xK_space), sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
 	, ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
 	, ((0, xK_Print), spawn "scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png")

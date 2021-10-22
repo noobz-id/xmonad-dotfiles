@@ -34,41 +34,43 @@ Attributes (used for this config):
 
 Key Bindings:
 super = Super key (windows key)
-1.  super + enter             -> open terminal
-2.  super + p                 -> open rofi (app menu)
-3.  super + f                 -> change layout to floating mode
-4.  super + w                 -> change layout to wide accordion mode
-5.  super + -                 -> switch to prev workspace
-6.  super + =                 -> switch to next workspace
-7.  super + m                 -> focus to master window
-8.  super + j                 -> focus to down window
-9.  super + k                 -> focus to up window
-10. super + h                 -> shrink focused window
-11. super + l                 -> expand focused window
-12. super + 1-9               -> switch to another workspace
-13. super + f1-f3             -> switch screen workspace for multi monitor
-14. super + space             -> full screen for focused window, use this for watch movie
-15. super + t                 -> revert back focused floating (mouse drag/resize) window to tile (tall)
-16. super + shift + a         -> close all window in current workspace
-17. super + shift + c         -> close focused window
-18. super + shift + q         -> close xmonad (if use Display Manager this action for logout)
-19. super + shift + r         -> restart xmonad on the fly
-20. super + shift + space     -> reset layout mode
-21. super + shift + t         -> revert back all floating (mouse drag/resize) windows to tile (tall)
-22. super + shift + j         -> swapping down focused window (move down)
-23. super + shift + k         -> swapping up focused window (move up)
-24. super + shift + -         -> move focused window to prev workspace
-25. super + shift + =         -> move focused window to next workspace
-26. super + shift + 1-9       -> move focused window to another workspace
-27. super + shift + f1-f3     -> move focused window to another screen workspace (for multi monitor)
-28. esc                       -> cancel action
-29. enter                     -> select action
-30. audio_mute                -> mute audio
-31. audio_raise               -> increase audio volume
-32. audio_lower               -> decrease audio volume
-33. brightness_up             -> increase brightness display
-34. brightness_down           -> decrease brightness display
-35. prt_scr (print_screen)    -> take screenshot
+1.  super + enter               -> open terminal
+2.  super + p                   -> open rofi (app menu)
+3.  super + f                   -> change layout to floating mode
+4.  super + w                   -> change layout to wide accordion mode
+5.  super + -                   -> switch to prev workspace
+6.  super + =                   -> switch to next workspace
+7.  super + m                   -> focus to master window
+8.  super + j                   -> focus to down window
+9.  super + k                   -> focus to up window
+10. super + h                   -> shrink focused window
+11. super + l                   -> expand focused window
+12. super + 1-9                 -> switch to another workspace
+13. super + f1-f3               -> switch screen workspace for multi monitor
+14. super + space               -> full screen for focused window, use this for watch movie
+15. super + t                   -> revert back focused floating (mouse drag/resize) window to tile (tall)
+16. super + \[ (bracket left)   -> decrease window spacing
+17. super + \] (bracket_right)  -> increase window spacing
+18. super + shift + a           -> close all window in current workspace
+19. super + shift + c           -> close focused window
+20. super + shift + q           -> close xmonad (if use Display Manager this action for logout)
+21. super + shift + r           -> restart xmonad on the fly
+22. super + shift + space       -> reset layout mode
+23. super + shift + t           -> revert back all floating (mouse drag/resize) windows to tile (tall)
+24. super + shift + j           -> swapping down focused window (move down)
+25. super + shift + k           -> swapping up focused window (move up)
+26. super + shift + -           -> move focused window to prev workspace
+27. super + shift + =           -> move focused window to next workspace
+28. super + shift + 1-9         -> move focused window to another workspace
+29. super + shift + f1-f3       -> move focused window to another screen workspace (for multi monitor)
+30. esc                         -> cancel action
+31. enter                       -> select action
+32. audio_mute                  -> mute audio
+33. audio_raise                 -> increase audio volume
+34. audio_lower                 -> decrease audio volume
+35. brightness_up               -> increase brightness display
+36. brightness_down             -> decrease brightness display
+37. prt_scr (print_screen)      -> take screenshot
 
 Mouse Bindings:
 super = Super Key (Windows Key)
@@ -78,7 +80,7 @@ super = Super Key (Windows Key)
 
 NOTE:
 1. Xmonad Config and stuff in: ~/.xmonad, Xmobar config: ~/.xmonad/xmobar/xmobar.hs
-2. This config set Menu key as Super_R key, because in my keyboard layout only have Left Super key (Super_L). i don't need the Menu key, so i remap this key. See xmonad.hs at line #67: spawnOnce "xmodmap -e \"keysym Menu = Super_R\"" , you can delete this line if you not used my key map.
+2. This config set Menu key as Super_R key, because in my keyboard layout only have Left Super key (Super_L). i don't need the Menu key, so i remap this key. See xmonad.hs at line #68: spawnOnce "xmodmap -e \"keysym Menu = Super_R\"" , you can delete this line if you not used my key map.
 3. Please change /home/zuliz to /home/your_user directory in xmobar.hs at lines #18 & #21, or xmobar will broken.
 4. if you just follow my config please install required Attributes software above.
 5. all changed in xmonad.hs mustbe recompiled, use cmd: xmonad --recompile. then restart your xmonad or re-login.
