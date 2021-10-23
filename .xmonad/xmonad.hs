@@ -20,7 +20,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isInProperty, isDialog, isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.SetWMName
-import XMonad.Hooks.Place
+
 
 import XMonad.Layout.Accordion
 import XMonad.Layout.SimplestFloat
@@ -118,16 +118,13 @@ myLayoutHook = showWName' myShowWNameTheme
 	$ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
     $ tall ||| floats ||| wide
 
-myPlaceHook :: Placement
-myPlaceHook = inBounds (underMouse (0.5, 0.5))
-
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
-myManageHook = placeHook myPlaceHook <+> composeAll [
-    isDialog --> doFloat
-    , isFullscreen --> (doF W.focusDown <+> doFullFloat)
-    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU" --> doFloat
-    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_SPLASH" --> doFloat
-    , isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doFloat
+myManageHook = composeAll [
+    isDialog --> doCenterFloat
+    , isFullscreen --> doFullFloat
+    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU" --> doCenterFloat
+    , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_SPLASH" --> doCenterFloat
+    , isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doCenterFloat
     ] <+> manageDocks
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X())
