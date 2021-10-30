@@ -21,7 +21,6 @@ import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, Toggl
 import XMonad.Hooks.ManageHelpers (isInProperty, isDialog, isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.SetWMName
 
-
 import XMonad.Layout.Accordion
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.ResizableTile
@@ -43,6 +42,7 @@ import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
 import Graphics.X11.ExtraTypes.XF86
+
 
 myModMask :: KeyMask
 myModMask = mod4Mask
