@@ -23,7 +23,7 @@ Attributes (used for this config):
 4.  pulseaudio -> audio server
 5.  nm-applet -> Network manager applet.
 6.  blueman-applet -> bluetooth manager applet.
-7.  pasystray -> pulseaudio system tray
+7.  volumeicon -> audio/volume icon system tray
 8.  nitrogen -> wallpaper manager
 9.  udiskie -> usb auto mounter with system tray support
 10. alacritty -> my favorite terminal
