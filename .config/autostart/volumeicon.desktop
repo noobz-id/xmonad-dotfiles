@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=Nitrogen
-Exec=nitrogen --restore
+Name=VolumeIcon
+Exec=volumeicon
 StartupNotify=false
 Type=Application

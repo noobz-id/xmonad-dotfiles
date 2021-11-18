@@ -2,5 +2,5 @@
 Version=1.0
 Name=Udiskie
 Exec=udiskie -t
-StartupNotify=true
+StartupNotify=false
 Type=Application
