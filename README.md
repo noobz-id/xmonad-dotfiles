@@ -16,7 +16,7 @@ Needed :
 4.  xmonad-utils -> xmonad utilities
 5.  xmobar -> panel / status bar
 
-Attributes (used for this config):
+Attributes (used for this config and must be installed):
 1.  trayer -> system tray
 2.  brightnessctl -> control monitor brightness
 3.  pactl -> audio volume control
@@ -31,6 +31,15 @@ Attributes (used for this config):
 12. rofi -> replacement for dmenu. what ?, this is app launcher menu. to change theme, execute command: "rofi-theme-selector" > enter selected theme (preview) > "Alt + a" to apply or "Esc" to cancel.
 13. scrot -> screenshot program
 14. lxsession -> i have benefit features from this program like: polkit (gvfs: android-mtp, apple-mobile-device, volume mounter and more), auto start support xdg desktop files (/etc/xdg/autostart and ~/.config/autostart) many application use this like virtualbox daemon, etc. i customize the auto start program like nitrogen,trayer and udiskie to ~/.config/autostart. so you no need to edit and recompile again the xmonad.hs. you can add more autostart (.desktop) program to this folder if you needed and enable/disable in Desktop Session Settings
+
+Optional (not a part of this config):
+1. neovim (text editor terminal)
+2. thunar (xfce4 file-manager)
+3. gvfs (gnome virtual filesystem thunar plugin)
+4. gvfs-afc (apple/ios virtual filesystem thunar plugin)
+5. gvfs-mtp (android virtual filesystem thunar plugin)
+6. lightdm (display manager)
+7. many more...
 
 Key Bindings:
 super = Super key (windows key)
@@ -84,6 +93,8 @@ NOTE:
 3. Please change /home/zuliz to /home/your_user directory in xmobar.hs at lines #18 & #21, or xmobar will broken.
 4. if you just follow my config please install required Attributes software above.
 5. all changed in xmonad.hs mustbe recompiled, use cmd: xmonad --recompile. then restart your xmonad or re-login.
+6. all auto start program moved to ~/config/autostart/*.desktop files since i use lxsession, you can add/edit/remove if you want and make sure your enabled by cheking in "Desktop Session Settings"
+7. i use this config without any Desktop Environtment (DE) installed in my system, so becarefull if you using my config with alongside DE. why ? some parts program like lxsession originaly from LXDE and all DE have independently program like their own session manager.
 
 
 CHANGE ANYTHING IF YOU WANT, USE YOUR FAVORITE SEARCH ENGINE FOR REFERENCES. ANY SETUP IN THIS CONFIG WORK WELL IN MY HARDWARE, IF YOU JUST FIND PROBLEM FOR YOUR DEVICE YOU CAN READ DOCUMENTATION FOR XMONAD,XMOBAR,WIKI,ETC... DO IT YOUR OWN RISK...
