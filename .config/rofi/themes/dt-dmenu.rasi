@@ -7,7 +7,7 @@
 
 * {
     background-color:           #282c34;
-    border-color:               #282c34;
+    border-color:               #51afef;
     text-color:                 #bbc2cf;
     height:                     20px;
     font:                       "SauceCodePro Nerd Font Mono 9";
