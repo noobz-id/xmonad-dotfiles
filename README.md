@@ -97,6 +97,6 @@ NOTE:
 5. all changed in xmonad.hs mustbe recompiled, use cmd: xmonad --recompile. then restart your xmonad or re-login.
 6. all auto start program moved to ~/config/autostart/*.desktop files since i use lxsession, you can add/edit/remove if you want and make sure your enabled by cheking in "Desktop Session Settings"
 7. i use this config without any Desktop Environtment (DE) installed in my system, so becarefull if you using my config with alongside DE. why ? some parts program like lxsession originaly from LXDE and all DE have independently program like their own session manager.
-8. xmonad/xmobar can't start/crashing after haskell module upgrade upgrade, login to tty (alt+ctrl+f(1,2,3,..)) than login at normal user type this: 1. sudo ghc-pkg recache<enter> 2. xmonad --recompile<enter>
+8. xmonad/xmobar can't start/crashing after haskell module upgrade, login to tty (alt+ctrl+f(1,2,3,..)) then login at normal user and type this: 1. sudo ghc-pkg recache<enter> 2. xmonad --recompile<enter> 3. reboot
 
 CHANGE ANYTHING IF YOU WANT, USE YOUR FAVORITE SEARCH ENGINE FOR REFERENCES. ANY SETUP IN THIS CONFIG WORK WELL IN MY HARDWARE, IF YOU JUST FIND PROBLEM FOR YOUR DEVICE YOU CAN READ DOCUMENTATION FOR XMONAD,XMOBAR,WIKI,ETC... DO IT YOUR OWN RISK...
