@@ -13,11 +13,11 @@ Config { font = "xft:Ubuntu:weight=bold:pixelsize=12:antialias=true:hinting=true
        , persistent   = True
        , iconRoot     = ".xmonad/xmobar/"  -- default: "."
        , commands = [
-		    Run DynNetwork ["-t", "<fn=2>\xf0dc</fn> <dev>: <tx> - <rx>", "-S", "True"] 10
-            , Run Cpu ["-t", "<fn=2>\xf2db</fn> cpu: <total>%","-H","60","--high","red"] 10
-            , Run Com "/home/zuliz/.xmonad/script/actual-memory.sh" ["<fn=2>\xf538</fn> mem: ", "MB"] "actmem" 10
-		    , Run Battery ["-t", "<fn=2>\xf240</fn> <acstatus>: <left>%", "--", "-i", "acp", "-O", "chr", "-o", "bat" , "-L", "20", "--low", "red"] 10
-            , Run Date "<fn=2>\xf017</fn> %b %d %Y - %H:%M" "date" 50
+		    Run DynNetwork ["-t", "<dev>: <tx> - <rx>  <fc=#666666><fn=1>|</fn></fc>", "-S", "True"] 10
+            , Run Cpu ["-t", "cpu: <total>%  <fc=#666666><fn=1>|</fn></fc>","-H","60","--high","red"] 10
+            , Run Com "/home/zuliz/.xmonad/script/actual-memory.sh" ["mem: ", "MB  <fc=#666666><fn=1>|</fn></fc>"] "actmem" 10
+		    , Run Battery ["-t", "<acstatus>: <left>%  <fc=#666666><fn=1>|</fn></fc>", "--", "-i", "acp", "-O", "chr", "-o", "bat" , "-L", "20", "--low", "red"] 10
+            , Run Date "%b %d %Y - %H:%M  <fc=#666666><fn=1>|</fn></fc>" "date" 50
             , Run Com "/home/zuliz/.xmonad/script/trayer-padding-icon.sh" [] "trayerpad" 20
             , Run UnsafeStdinReader
         ]
