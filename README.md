@@ -80,7 +80,7 @@ super = Super key (windows key)
 34. audio_lower                 -> decrease audio volume
 35. brightness_up               -> increase brightness display
 36. brightness_down             -> decrease brightness display
-37. prt_scr (print_screen)      -> take screenshot
+37. super + prt_scr             -> take screenshot
 38. super + e                   -> rofi emoji
 
 Mouse Bindings:
@@ -90,9 +90,9 @@ super = Super Key (Windows Key)
 3. super + shift + right click      -> Resize window Right,Down
 
 NOTE:
-1. Xmonad Config and stuff in: ~/.xmonad, Xmobar config: ~/.xmonad/xmobar/xmobar.hs
+1. Xmonad Config and stuff in: ~/.xmonad, Xmobar config: ~/.xmonad/xmobar/xmobarrc
 2. This config set Menu key as Super_R key, because in my keyboard layout only have Left Super key (Super_L). i don't need the Menu key, so i remap this key. See xmonad.hs at line #68: spawnOnce "xmodmap -e \"keysym Menu = Super_R\"" , you can delete this line if you not used my key map.
-3. Please change /home/zuliz to /home/your_user directory in xmobar.hs at lines #18 & #21, or xmobar will broken.
+3. Please change /home/zuliz to /home/your_user directory in xmobarrc at lines #18 & #21, or xmobar will broken.
 4. if you just follow my config please install required Attributes software above.
 5. all changed in xmonad.hs mustbe recompiled, use cmd: xmonad --recompile. then restart your xmonad or re-login.
 6. all auto start program moved to ~/config/autostart/*.desktop files since i use lxsession, you can add/edit/remove if you want and make sure your enabled by cheking in "Desktop Session Settings"

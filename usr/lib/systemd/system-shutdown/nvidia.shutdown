@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# remove nvidia module
+# prevent systemd unmount error (oldroot)
+
+/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
+
+

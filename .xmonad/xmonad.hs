@@ -155,7 +155,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
     , ((modm, xK_bracketright), incWindowSpacing 1)
 	, ((modm, xK_space), sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
 	, ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
-	, ((0, xK_Print), spawn "scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png")
+	, ((modm, xK_Print), spawn "scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png")
 	, ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute 0 toggle")
 	, ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume 0 -5%")
 	, ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume 0 +5%")
@@ -189,7 +189,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $ [
 
 main :: IO()
 main = do
-	xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar/xmobar.hs"
+	xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar/xmobarrc"
 	xmonad $ ewmh def {
 		manageHook		        = myManageHook
 		, handleEventHook	    = docksEventHook
