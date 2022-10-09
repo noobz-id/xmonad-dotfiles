@@ -24,6 +24,8 @@ import XMonad.Hooks.SetWMName
 import XMonad.Layout.Accordion
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.IfMax
+import XMonad.Layout.Grid
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
@@ -109,14 +111,23 @@ wide = renamed [Replace "wide"]
     $ mySpacing 1
     $ Mirror Accordion
 
+grid = renamed [Replace "grid"]
+    $ withBorder myBorderWidth
+    $ smartBorders
+    $ subLayout [] (smartBorders Simplest)
+    $ limitWindows 12
+    $ mySpacing 1
+    $ IfMax 2 (Tall 1 (3/100) (1/2)) Grid
+
 myLayoutHook = showWName' myShowWNameTheme 
     $ avoidStruts
     $ mouseResize 
     $ windowArrange
     $ T.toggleLayouts floats 
     $ T.toggleLayouts wide
+    $ T.toggleLayouts grid
     $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
-    $ tall ||| floats ||| wide
+    $ tall ||| floats ||| wide ||| grid
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll [
@@ -138,6 +149,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
     , ((modm .|. shiftMask, xK_a), killAll)
     , ((modm, xK_f), sendMessage (T.Toggle "floats"))
     , ((modm, xK_w), sendMessage (T.Toggle "wide"))
+    , ((modm, xK_g), sendMessage (T.Toggle "grid"))
     , ((modm, xK_t), withFocused $ windows . W.sink)
     , ((modm .|. shiftMask, xK_t), sinkAll)
     , ((modm, xK_m), windows W.focusMaster)
