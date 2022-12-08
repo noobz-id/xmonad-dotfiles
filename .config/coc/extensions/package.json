@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "coc-marketplace": ">=1.9.0",
+    "coc-yaml": ">=1.9.0",
+    "coc-syntax": ">=1.2.4",
+    "coc-xml": ">=1.14.1",
+    "coc-highlight": ">=2.0.4",
+    "coc-cmake": ">=0.2.1",
+    "coc-html": ">=1.8.0",
+    "coc-clang-format-style-options": ">=0.0.5",
+    "coc-lua": ">=1.0.1",
+    "coc-markdownlint": ">=1.26.0",
+    "coc-sh": ">=0.7.0",
+    "coc-diagnostic": ">=0.23.6",
+    "coc-rust-analyzer": ">=0.69.7"
+  },
+  "disabled": [],
+  "locked": []
+}
