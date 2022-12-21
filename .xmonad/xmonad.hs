@@ -145,6 +145,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
     , ((modm .|. shiftMask, xK_q), io exitSuccess)
     , ((modm, xK_p), spawn "rofi -show drun -show-icons")
     , ((modm, xK_e), spawn "rofi -show emoji -modi emoji")
+    , ((modm .|. shiftMask, xK_p), spawn "rofi-pass")
     , ((modm .|. shiftMask, xK_c), kill1)
     , ((modm .|. shiftMask, xK_a), killAll)
     , ((modm, xK_f), sendMessage (T.Toggle "floats"))
