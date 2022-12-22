@@ -14,6 +14,9 @@ Plug 'mengelbrecht/lightline-bufferline'
 " nord theme
 Plug 'arcticicestudio/nord-vim'
 
+" css color preview
+Plug 'ap/vim-css-color'
+
 " coc vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -215,5 +218,11 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Remap Copy & Paste key
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
 
 
