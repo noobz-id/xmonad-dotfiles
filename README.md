@@ -86,7 +86,8 @@ super = Super key (windows key)
 37. super + prt_scr             -> take screenshot
 38. super + e                   -> rofi emoji
 39. super + g                   -> change layout to grid mode
-40. super + shift               -> rofi-pass (pass manager)
+40. super + shift + p           -> rofi-pass (pass manager)
+41. super + shift + print       -> screenshot with 3s delay
 
 Mouse Bindings:
 super = Super Key (Windows Key)

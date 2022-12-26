@@ -61,7 +61,7 @@ myNormColor   = "#00787a"
 myFocusColor :: String
 myFocusColor  = "#46d9ff"
 
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", " 0 "]
 
 myStartupHook :: X ()
 myStartupHook = do
@@ -169,13 +169,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
     , ((modm, xK_space), sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
     , ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
     , ((modm, xK_Print), spawn "scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png")
+    , ((modm .|. shiftMask, xK_Print), spawn "scrot -d 3 -F  ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png")
     , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute 0 toggle")
     , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume 0 -5%")
     , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume 0 +5%")
     , ((0, xF86XK_MonBrightnessUp), spawn "brightnessctl s +2%")
     , ((0, xF86XK_MonBrightnessDown), spawn "brightnessctl s 2-%")
     ] ++ [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
     ] ++ [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
