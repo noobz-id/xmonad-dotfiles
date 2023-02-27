@@ -11,6 +11,7 @@ and also work for all linux distro with xmonad installed.
 
 Minimum:
 1.  xmonad 0.17.0+
+2.  xmobar 0.45+
 
 Needed :
 1.  xorg -> display server
