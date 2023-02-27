@@ -1,5 +1,5 @@
 
-Config { font = "xft:Ubuntu Bold 10"
+Config { font = "xft:Ubuntu-Fixed-Bold-9"
        , bgColor      = "#282c34"
        , fgColor      = "#ff6c6b"
        , position       = TopSize L 100 24
