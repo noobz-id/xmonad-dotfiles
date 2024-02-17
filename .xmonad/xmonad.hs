@@ -145,6 +145,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
     , ((modm .|. shiftMask, xK_q), io exitSuccess)
     , ((modm, xK_p), spawn "rofi -show drun -show-icons")
     , ((modm, xK_e), spawn "rofi -show emoji -modi emoji")
+    , ((modm, xK_Tab), spawn "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}' ; sleep 0.5; xdotool type $(xclip -o -selection clipboard)")
     , ((modm .|. shiftMask, xK_p), spawn "rofi-pass")
     , ((modm .|. shiftMask, xK_c), kill1)
     , ((modm .|. shiftMask, xK_a), killAll)
@@ -223,7 +224,7 @@ main = do
             , ppHidden = xmobarColor "#ecbe7b" "" . clickable
             , ppHiddenNoWindows = xmobarColor "#82AAFF" "" . clickable
             , ppTitle = xmobarColor "#d0d0d0" "" . shorten 65
-            , ppSep =  "<fc=#666666> <fn=1>|</fn> </fc>"
+            , ppSep =  "<fc=#666666> | </fc>"
             , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"
             , ppExtras  = [windowCount]
             , ppOrder  = \(w:l:t:e) -> [w,concat([l, ": "]++e),t]

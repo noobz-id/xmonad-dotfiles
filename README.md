@@ -36,6 +36,7 @@ Attributes (used for this config and must be installed):
 13. scrot -> screenshot program
 14. lxsession -> i have benefit features from this program like: polkit (gvfs: android-mtp, apple-mobile-device, volume mounter and more), auto start support xdg desktop files (/etc/xdg/autostart and ~/.config/autostart) many application use this like virtualbox daemon, etc. i customize the auto start program like nitrogen,trayer and udiskie to ~/.config/autostart. so you no need to edit and recompile again the xmonad.hs. you can add more autostart (.desktop) program to this folder if you needed and enable/disable in Desktop Session Settings
 15. rofi-emoji -> emoji support in rofi style
+16. rofi-greenclip -> clipboard manager support tracking history.
 
 Optional (not a part of this config):
 1. neovim (text editor terminal)
@@ -89,6 +90,7 @@ super = Super key (windows key)
 39. super + g                   -> change layout to grid mode
 40. super + shift + p           -> rofi-pass (pass manager)
 41. super + shift + print       -> screenshot with 3s delay
+42. super + tab                 -> rofi greenclip menu
 
 Mouse Bindings:
 super = Super Key (Windows Key)

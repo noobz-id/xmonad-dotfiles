@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Name=GreenClip
+Exec=greenclip daemon
+StartupNotify=false
+Type=Application
