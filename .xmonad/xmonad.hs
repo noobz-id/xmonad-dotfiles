@@ -136,6 +136,7 @@ myManageHook = composeAll [
     , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU" --> doCenterFloat
     , isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_SPLASH" --> doCenterFloat
     , isInProperty "_NET_WM_WINDOW_TYPE" "_KDE_NET_WM_WINDOW_TYPE_OVERRIDE" --> doCenterFloat
+    , isInProperty "_NET_WM_STATE" "_NET_WM_STATE_ABOVE" --> doCenterFloat
     ] <+> manageDocks
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X())
